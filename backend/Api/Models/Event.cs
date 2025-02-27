@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Api.Models;
 
-public class TastingEvent
+public class Event
 {
     [Key]
     public int Id { get; set; }
