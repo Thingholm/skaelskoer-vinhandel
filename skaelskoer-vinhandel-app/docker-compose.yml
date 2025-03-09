@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8081"
+      - "19000:19000"
+      - "19001:19001"
+      - "19002:19002"
+      - "19006:19006"
+    environment:
+      - NODE_ENV=development
+      - REACT_NATIVE_PACKAGER_HOSTNAME=192.168.1.33
+    volumes:
+      - .:/opt/skaelskoer-vinhandel-app
+      # Don't sync node_modules between host and container
+      - /opt/skaelskoer-vinhandel-app/node_modules
