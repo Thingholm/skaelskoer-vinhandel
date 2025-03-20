@@ -1,27 +1,42 @@
 
-import { Text, View, StyleSheet, Image } from "react-native";
-
+import { Text, View, StyleSheet, Image, ScrollView } from "react-native";
+import { StatusBar } from "expo-status-bar";
 
 export default function Index() {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{light: "#FFFFFD", dark: "#003538"}}
-      headerImage={
+    <View style={styles.container}>
+      <StatusBar style="auto"/>
+      <View style={styles.headerContainer}>
         <Image
-        source={require('@/assets/images/Skaelskoer_vinhandel_logo.png')}
+          source={require('@/assets/images/Skaelskoer_vinhandel_logo.png')}
+          style={styles.headerImage}
+          resizeMode="contain"
         />
-      }>
-    </ParallaxScrollView>
+      </View>
+    </View>
   );
 }
 
-const styles = StyleSheet.create ({
-formatting: {
-  flex: 1, 
-  justifyContent: "center",
-  alignItems: "center",
-},
-headerImage: {
-
-},
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#FFFFFD",
+  },
+  headerContainer: {
+    height: 200,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#003538",
+    paddingTop: 50,
+  },
+  headerImage: {
+    width: '80%',
+    height: '80%',
+  },
+  scrollView: {
+    flex: 1,
+  },
+  scrollViewContent: {
+    padding: 20,
+  }
 });
