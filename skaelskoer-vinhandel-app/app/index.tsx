@@ -2,11 +2,13 @@
 import { Text, View, StyleSheet, Image, ScrollView } from "react-native";
 import { StatusBar } from "expo-status-bar";
 
+
 export default function Index() {
   return (
     <View style={styles.container}>
       <StatusBar style="auto"/>
       <View style={styles.headerContainer}>
+        
         <Image
           source={require('@/assets/images/Skaelskoer_vinhandel_logo.png')}
           style={styles.headerImage}
