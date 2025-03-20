@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFFFFD",
   },
   headerContainer: {
-    height: 200,
+    height: 100,
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#003538",
@@ -32,6 +32,8 @@ const styles = StyleSheet.create({
   headerImage: {
     width: '80%',
     height: '80%',
+    marginBottom: 50,
+    marginLeft: 45,
   },
   scrollView: {
     flex: 1,
