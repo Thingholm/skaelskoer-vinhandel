@@ -4,18 +4,59 @@ import { StatusBar } from "expo-status-bar";
 import { Drawer, IconButton, PaperProvider, BottomNavigation, MD3LightTheme } from "react-native-paper";
 import { DrawerLayout, GestureHandlerRootView } from "react-native-gesture-handler";
 
-
-// interface DrawerMethods {
-//   openDrawer: () => void;
-//   closeDrawer: () => void;
-// }
-
 export default function Index() {
   const [active, setActive] = useState('home');
   const [drawerOpen, setDrawerOpen] = useState(false);
   const drawerRef = useRef<DrawerLayout>(null);
 
-  
+  const toggleDrawer = () => {
+    try {
+      if (drawerRef.current) {
+        if (drawerOpen) {
+          drawerRef.current.closeDrawer();
+        } else {
+          drawerRef.current.openDrawer();
+        }
+        setDrawerOpen(!drawerOpen);
+      }
+    } catch (error) {
+      console.log('Drawer error:', error);
+    }
+  };
+
+  const renderDrawerContent = () => {
+    return (
+      <View style={styles.drawerContent}>
+        <Drawer.Section>
+          <Drawer.Item 
+            label="Home"
+            active={active === 'home'}
+            onPress={() => {
+              setActive('home');
+              toggleDrawer();
+            }}
+          />
+          <Drawer.Item  
+            label="Products"
+            active={active === 'products'}
+            onPress={() => {
+              setActive('products');
+              toggleDrawer();
+            }}
+          />
+          <Drawer.Item  
+            label="About"
+            active={active === 'about'}
+            onPress={() => {
+              setActive('about');
+              toggleDrawer();
+            }}
+          />
+        </Drawer.Section>
+      </View>
+    );
+  };
+
   const homeRoute = () => (
     <View style={styles.routeContainer}>
       <Text style={styles.heading}>Welcome to Skælskør Vinhandel</Text>
@@ -70,54 +111,6 @@ export default function Index() {
         onIndexChange={setIndex}
         renderScene={renderScene}
         />
-    );
-  };
-
-  const toggleDrawer = () => {
-    try {
-      if (drawerRef.current) {
-        if (drawerOpen) {
-          drawerRef.current.closeDrawer();
-        } else {
-          drawerRef.current.openDrawer();
-        }
-        setDrawerOpen(!drawerOpen);
-      }
-    } catch (error) {
-      console.log('Drawer error:', error);
-    }
-  };
-
-  const renderDrawerContent = () => {
-    return (
-      <View style={styles.drawerContent}>
-        <Drawer.Section>
-          <Drawer.Item 
-            label="Home"
-            active={active === 'home'}
-            onPress={() => {
-              setActive('home');
-              toggleDrawer();
-            }}
-          />
-          <Drawer.Item  
-            label="Products"
-            active={active === 'products'}
-            onPress={() => {
-              setActive('products');
-              toggleDrawer();
-            }}
-          />
-          <Drawer.Item  
-            label="About"
-            active={active === 'about'}
-            onPress={() => {
-              setActive('about');
-              toggleDrawer();
-            }}
-          />
-        </Drawer.Section>
-      </View>
     );
   };
 
