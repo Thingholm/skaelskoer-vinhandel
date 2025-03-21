@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { Text, View, StyleSheet, Image, ScrollView } from "react-native";
 import { StatusBar } from "expo-status-bar";
-import { Drawer, IconButton, PaperProvider } from "react-native-paper";
+import { Drawer, IconButton, PaperProvider, BottomNavigation } from "react-native-paper";
 import { DrawerLayout, GestureHandlerRootView } from "react-native-gesture-handler";
 
 
@@ -14,6 +14,62 @@ export default function Index() {
   const [active, setActive] = useState('home');
   const [drawerOpen, setDrawerOpen] = useState(false);
   const drawerRef = useRef<DrawerLayout>(null);
+
+  // ...existing code...
+
+  // Replace the simple route components with more meaningful screens
+  const homeRoute = () => (
+    <View style={styles.routeContainer}>
+      <Text style={styles.heading}>Welcome to Skælskør Vinhandel</Text>
+      <Text style={styles.paragraph}>Explore our selection of fine wines and spirits.</Text>
+    </View>
+  );
+  
+  const searchRoute = () => (
+    <View style={styles.routeContainer}>
+      <Text style={styles.heading}>Search</Text>
+      <Text style={styles.paragraph}>Find your favorite wines and spirits.</Text>
+    </View>
+  );
+  
+  const accountRoute = () => (
+    <View style={styles.routeContainer}>
+      <Text style={styles.heading}>Account</Text>
+      <Text style={styles.paragraph}>Manage your account and preferences.</Text>
+    </View>
+  );
+  
+  const cartRoute = () => (
+    <View style={styles.routeContainer}>
+      <Text style={styles.heading}>Shopping Cart</Text>
+      <Text style={styles.paragraph}>View and manage your selected items.</Text>
+    </View>
+  );
+
+  const BottomMenu = () => {
+    const [index, setIndex] = useState(0);
+    const [routes] = useState([
+      { key: 'home', title: 'Hjem', focusedIcon: 'home', unfocusedIcon: 'home-outline'},
+      { key: 'search', title: 'Søg', focusedIcon: 'magnify', unfocusedIcon: 'magnify'},
+      { key: 'account', title: 'Konto', focusedIcon: 'account', unfocusedIcon: 'account-outline'},
+      { key: 'cart', title: 'Kurv', focusedIcon: 'cart', unfocusedIcon: 'cart-outline'},
+    ]);
+
+    const renderScene = BottomNavigation.SceneMap({
+      home: homeRoute,
+      search: searchRoute,
+      account: accountRoute,
+      cart: cartRoute,
+    });
+
+    return (
+      <BottomNavigation barStyle={{backgroundColor: '#003538'}} activeColor="#FFFFFD" inactiveColor="#FFFFFD"
+        navigationState={{index, routes}}
+        onIndexChange={setIndex}
+        renderScene={renderScene}
+        />
+    );
+  };
 
   const toggleDrawer = () => {
     try {
@@ -63,7 +119,7 @@ export default function Index() {
     );
   };
 
-  // Rest of your component remains unchanged
+
   return (
     <View style={styles.outerContainer}>
       <StatusBar style="auto" />
@@ -95,11 +151,9 @@ export default function Index() {
                   resizeMode="contain"
                 />
               </View>
-              
               <View style={styles.content}>
-                <Text style={styles.heading}>Welcome to Skælskør Vinhandel</Text>
-                <Text style={styles.paragraph}>Explore our selection of fine wines and spirits.</Text>
               </View>
+              <BottomMenu/>
             </View>
           </DrawerLayout>
         </PaperProvider>
@@ -150,6 +204,10 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 50,
     backgroundColor: "#FFFFFD",
+  },
+  routeContainer: {
+    flex: 1,
+    padding: 16,
   },
   heading: {
     fontSize: 24,
