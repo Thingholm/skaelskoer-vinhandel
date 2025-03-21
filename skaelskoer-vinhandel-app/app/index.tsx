@@ -15,9 +15,7 @@ export default function Index() {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const drawerRef = useRef<DrawerLayout>(null);
 
-  // ...existing code...
-
-  // Replace the simple route components with more meaningful screens
+  
   const homeRoute = () => (
     <View style={styles.routeContainer}>
       <Text style={styles.heading}>Welcome to Skælskør Vinhandel</Text>
@@ -63,7 +61,11 @@ export default function Index() {
     });
 
     return (
-      <BottomNavigation barStyle={{backgroundColor: '#003538'}} activeColor="#FFFFFD" inactiveColor="#FFFFFD"
+      <BottomNavigation 
+        barStyle={{backgroundColor: '#003538'}}
+        activeColor="#FFFFFD"
+        inactiveColor="#FFFFFD"
+        activeIndicatorStyle={{backgroundColor: '#004D52'}}
         navigationState={{index, routes}}
         onIndexChange={setIndex}
         renderScene={renderScene}
