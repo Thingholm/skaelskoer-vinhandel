@@ -153,8 +153,6 @@ export default function Index() {
                   resizeMode="contain"
                 />
               </View>
-              <View style={styles.content}>
-              </View>
               <BottomMenu/>
             </View>
           </DrawerLayout>
