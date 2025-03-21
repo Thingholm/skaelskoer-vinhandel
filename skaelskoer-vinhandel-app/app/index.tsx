@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { Text, View, StyleSheet, Image, ScrollView } from "react-native";
 import { StatusBar } from "expo-status-bar";
-import { Drawer, IconButton, PaperProvider, BottomNavigation } from "react-native-paper";
+import { Drawer, IconButton, PaperProvider, BottomNavigation, MD3LightTheme } from "react-native-paper";
 import { DrawerLayout, GestureHandlerRootView } from "react-native-gesture-handler";
 
 
@@ -91,8 +91,8 @@ export default function Index() {
   const renderDrawerContent = () => {
     return (
       <View style={styles.drawerContent}>
-        <Drawer.Section title="Menu">
-          <Drawer.Item  
+        <Drawer.Section>
+          <Drawer.Item 
             label="Home"
             active={active === 'home'}
             onPress={() => {
@@ -121,12 +121,19 @@ export default function Index() {
     );
   };
 
+  const theme = {
+    ...MD3LightTheme,
+    colors: {
+      ...MD3LightTheme.colors,
+      secondaryContainer: '#D3D3D3',
+    },
+  };
 
   return (
     <View style={styles.outerContainer}>
       <StatusBar style="auto" />
       <GestureHandlerRootView style={{flex: 1}}>
-        <PaperProvider>
+        <PaperProvider theme={theme}>
           <DrawerLayout
             ref={drawerRef}
             drawerPosition="left"
