@@ -1,117 +1,52 @@
 import React, { useState, useRef } from "react";
-import { Text, View, StyleSheet, Image, ScrollView } from "react-native";
+import { View, StyleSheet, Image } from "react-native";
 import { StatusBar } from "expo-status-bar";
-import { Drawer, IconButton, PaperProvider, BottomNavigation, MD3LightTheme } from "react-native-paper";
+import {  IconButton, PaperProvider, BottomNavigation, MD3LightTheme } from "react-native-paper";
 import { DrawerLayout, GestureHandlerRootView } from "react-native-gesture-handler";
+import BottomMenu from '@/components/BottomNavigation';
+import DrawerContent from "@/components/DrawerMenu";
 
 export default function Index() {
-  const [active, setActive] = useState('home');
   const [drawerOpen, setDrawerOpen] = useState(false);
   const drawerRef = useRef<DrawerLayout>(null);
 
   const toggleDrawer = () => {
-    try {
-      if (drawerRef.current) {
-        if (drawerOpen) {
-          drawerRef.current.closeDrawer();
-        } else {
-          drawerRef.current.openDrawer();
+      try {
+        if (drawerRef.current) {
+          if (drawerOpen) {
+            drawerRef.current.closeDrawer();
+          } else {
+            drawerRef.current.openDrawer();
+          }
+          setDrawerOpen(!drawerOpen);
         }
-        setDrawerOpen(!drawerOpen);
+      } catch (error) {
+        console.log('Drawer error:', error);
       }
-    } catch (error) {
-      console.log('Drawer error:', error);
+    };
+
+  const handleDrawerItemPress = (screen: string) => {
+    switch (screen) {
+      case 'home':
+        // Navigate to home screen or update content
+        console.log('Navigating to Home');
+        // If using a router: navigation.navigate('Home');
+        break;
+      case 'products':
+        // Navigate to products screen
+        console.log('Navigating to Products');
+        // If using a router: navigation.navigate('Products');
+        break;
+      case 'about':
+        // Navigate to about screen
+        console.log('Navigating to About');
+        // If using a router: navigation.navigate('About');
+        break;
+      default:
+        console.log(`Unknown screen: ${screen}`);
     }
-  };
 
-  const renderDrawerContent = () => {
-    return (
-      <View style={styles.drawerContent}>
-        <Drawer.Section>
-          <Drawer.Item 
-            label="Home"
-            active={active === 'home'}
-            onPress={() => {
-              setActive('home');
-              toggleDrawer();
-            }}
-          />
-          <Drawer.Item  
-            label="Products"
-            active={active === 'products'}
-            onPress={() => {
-              setActive('products');
-              toggleDrawer();
-            }}
-          />
-          <Drawer.Item  
-            label="About"
-            active={active === 'about'}
-            onPress={() => {
-              setActive('about');
-              toggleDrawer();
-            }}
-          />
-        </Drawer.Section>
-      </View>
-    );
-  };
-
-  const homeRoute = () => (
-    <View style={styles.routeContainer}>
-      <Text style={styles.heading}>Welcome to Skælskør Vinhandel</Text>
-      <Text style={styles.paragraph}>Explore our selection of fine wines and spirits.</Text>
-    </View>
-  );
-  
-  const searchRoute = () => (
-    <View style={styles.routeContainer}>
-      <Text style={styles.heading}>Search</Text>
-      <Text style={styles.paragraph}>Find your favorite wines and spirits.</Text>
-    </View>
-  );
-  
-  const accountRoute = () => (
-    <View style={styles.routeContainer}>
-      <Text style={styles.heading}>Account</Text>
-      <Text style={styles.paragraph}>Manage your account and preferences.</Text>
-    </View>
-  );
-  
-  const cartRoute = () => (
-    <View style={styles.routeContainer}>
-      <Text style={styles.heading}>Shopping Cart</Text>
-      <Text style={styles.paragraph}>View and manage your selected items.</Text>
-    </View>
-  );
-
-  const BottomMenu = () => {
-    const [index, setIndex] = useState(0);
-    const [routes] = useState([
-      { key: 'home', title: 'Hjem', focusedIcon: 'home', unfocusedIcon: 'home-outline'},
-      { key: 'search', title: 'Søg', focusedIcon: 'magnify', unfocusedIcon: 'magnify'},
-      { key: 'account', title: 'Konto', focusedIcon: 'account', unfocusedIcon: 'account-outline'},
-      { key: 'cart', title: 'Kurv', focusedIcon: 'cart', unfocusedIcon: 'cart-outline'},
-    ]);
-
-    const renderScene = BottomNavigation.SceneMap({
-      home: homeRoute,
-      search: searchRoute,
-      account: accountRoute,
-      cart: cartRoute,
-    });
-
-    return (
-      <BottomNavigation 
-        barStyle={{backgroundColor: '#003538'}}
-        activeColor="#FFFFFD"
-        inactiveColor="#FFFFFD"
-        activeIndicatorStyle={{backgroundColor: '#004D52'}}
-        navigationState={{index, routes}}
-        onIndexChange={setIndex}
-        renderScene={renderScene}
-        />
-    );
+    toggleDrawer();
   };
 
   const theme = {
@@ -133,7 +68,7 @@ export default function Index() {
             drawerType="front"
             drawerWidth={250}
             drawerBackgroundColor="#FFFFFD"
-            renderNavigationView={renderDrawerContent}
+            renderNavigationView={() => <DrawerContent onItemPress={handleDrawerItemPress} />}
             onDrawerOpen={() => setDrawerOpen(true)}
             onDrawerClose={() => setDrawerOpen(false)}
           >
