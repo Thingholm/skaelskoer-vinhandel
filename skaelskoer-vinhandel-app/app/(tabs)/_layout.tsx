@@ -8,22 +8,25 @@ export default function TabLayout() {
   return (
     <Tabs  
     screenOptions={{ 
+        //farve på ikoner, når de aktive og inaktive
         tabBarActiveTintColor: 'white', 
         tabBarInactiveTintColor: 'white', 
+
+        //Styling til tabbaren
         tabBarStyle: { 
             backgroundColor: '#003538',
             height: 100,
             paddingBottom: 10,
             paddingTop: 5
         },
-        tabBarInactiveBackgroundColor: undefined,
-
+        //Gør labels nemmere at læse
         tabBarLabelStyle: {
             fontSize: 14,
             fontWeight: 'bold',
             marginBottom: 5,
             marginTop: 10,
         },
+        //Margin til ikoner
         tabBarIconStyle: { 
             marginTop: 5 
         }
@@ -34,6 +37,7 @@ export default function TabLayout() {
           title: 'Hjem',
           tabBarIcon: ({ color, focused }) => (
             <View style={{
+                //Sætter farven på ikonet alt efter om det er fokuseret eller ej
               backgroundColor: focused ? 'grey' : 'transparent',
               borderRadius: 20,
               width: 50,
@@ -52,6 +56,7 @@ export default function TabLayout() {
           title: 'Søg',
           tabBarIcon: ({ color, focused }) => (
             <View style={{
+                //Sætter farven på ikonet alt efter om det er fokuseret eller ej
               backgroundColor: focused ? 'grey' : 'transparent',
               borderRadius: 20,
               width: 50,
@@ -70,6 +75,7 @@ export default function TabLayout() {
           title: 'Konto',
           tabBarIcon: ({ color, focused }) => (
             <View style={{
+                //Sætter farven på ikonet alt efter om det er fokuseret eller ej
               backgroundColor: focused ? 'grey' : 'transparent',
               borderRadius: 20,
               width: 50,
@@ -88,6 +94,7 @@ export default function TabLayout() {
           title: 'Kurv',
           tabBarIcon: ({ color, focused }) => (
             <View style={{
+                //Sætter farven på ikonet alt efter om det er fokuseret eller ej
               backgroundColor: focused ? 'grey' : 'transparent',
               borderRadius: 20,
               width: 50,
