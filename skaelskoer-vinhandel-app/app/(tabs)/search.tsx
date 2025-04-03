@@ -1,14 +1,17 @@
 import { View, Text, StyleSheet } from 'react-native';
 import AppLayout from '@/components/AppLayout';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function Tab() {
    return (
-      <AppLayout>
-        <View style={styles.contentContainer}>
-          <Text style={styles.heading}>Welcome to Skælskør Vinhandel</Text>
-          <Text style={styles.paragraph}>Explore our selection of fine wines and spirits.</Text>
-        </View>
-      </AppLayout>
+      <SafeAreaView>
+        <AppLayout>
+          <View style={styles.contentContainer}>
+            <Text style={styles.heading}>Welcome to Skælskør Vinhandel</Text>
+            <Text style={styles.paragraph}>Explore our selection of fine wines and spirits.</Text>
+          </View>
+        </AppLayout>
+      </SafeAreaView>
     );
 }
 
