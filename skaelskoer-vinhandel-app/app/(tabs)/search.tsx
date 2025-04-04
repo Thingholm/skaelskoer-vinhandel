@@ -4,14 +4,12 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function Tab() {
    return (
-      <SafeAreaView>
         <AppLayout>
-          <View style={styles.contentContainer}>
+          <SafeAreaView style={styles.contentContainer}>
             <Text style={styles.heading}>Welcome to Skælskør Vinhandel</Text>
             <Text style={styles.paragraph}>Explore our selection of fine wines and spirits.</Text>
-          </View>
+          </SafeAreaView>
         </AppLayout>
-      </SafeAreaView>
     );
 }
 
