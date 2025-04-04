@@ -36,10 +36,10 @@ const SliderItem = ({item, index, scrollX}: Props) => {
 });
   return (
     <Animated.View style={[styles.itemContainer, rnAnimatedStyle]}>
-        <Image source={item.image} style={{width: 300, height: 400, borderRadius: 20}} />
+        <Image source={item.image} style={{width: 300, height: 350, borderRadius: 20}} />
         <View style={{gap: 10}}>
             <Text style={styles.title}>{item.title}</Text>
-            <Text style={styles.description}>{item.description}</Text>
+            {/* <Text style={styles.description}>{item.description}</Text> */}
         </View>
     </Animated.View>
   )
