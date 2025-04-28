@@ -20,9 +20,9 @@ const DrawerContent = ({ onItemPress }: DrawerContentProps) => {
     <View style={styles.drawerContent}>
         <Drawer.Section>
           <Drawer.Item 
-            label="Home"
-            active={active === 'home'}
-            onPress={() => handleItemPress('home')}
+            label="Alle produkter"
+            active={active === 'Alle produkter'}
+            onPress={() => handleItemPress('Alle produkter')}
           />
           <Drawer.Item  
             label="Products"
