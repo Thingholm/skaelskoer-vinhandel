@@ -3,6 +3,7 @@ import { View, StyleSheet, Image } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { Drawer, IconButton, PaperProvider, MD3LightTheme } from "react-native-paper";
 import { DrawerLayout, GestureHandlerRootView } from "react-native-gesture-handler";
+import Categories from '@/data/Categories.json'
 
 interface AppLayoutProps {
   children: React.ReactNode;
@@ -12,6 +13,15 @@ export default function AppLayout({ children }: AppLayoutProps) {
   const [active, setActive] = useState('home');
   const [drawerOpen, setDrawerOpen] = useState(false);
   const drawerRef = useRef<DrawerLayout>(null);
+
+  const handleItemPress = (screen: string) => {
+    setActive(screen);
+    // Close drawer after selection
+    if (drawerRef.current) {
+      drawerRef.current.closeDrawer();
+      setDrawerOpen(false);
+    }
+  };
 
   const toggleDrawer = () => {
     try {
@@ -32,30 +42,16 @@ export default function AppLayout({ children }: AppLayoutProps) {
     return (
       <View style={styles.drawerContent}>
         <Drawer.Section>
-          <Drawer.Item 
-            label="Home"
-            active={active === 'home'}
-            onPress={() => {
-              setActive('home');
-              toggleDrawer();
-            }}
-          />
-          <Drawer.Item  
-            label="Products"
-            active={active === 'products'}
-            onPress={() => {
-              setActive('products');
-              toggleDrawer();
-            }}
-          />
-          <Drawer.Item  
-            label="About"
-            active={active === 'about'}
-            onPress={() => {
-              setActive('about');
-              toggleDrawer();
-            }}
-          />
+          {Categories.map(Item => {
+            return ( 
+              <Drawer.Item
+              label={Item.name}
+              key={Item.id}
+              active={active === Item.id.toString()}
+              onPress={() => handleItemPress(Item.id.toString())}
+              />
+            )
+          })}
         </Drawer.Section>
       </View>
     );
