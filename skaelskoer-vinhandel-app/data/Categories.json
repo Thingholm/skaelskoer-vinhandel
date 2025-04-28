@@ -1,0 +1,7 @@
+[
+    { "id": "all", "name": "All Products" },
+    { "id": "red", "name": "Red Wine" },
+    { "id": "white", "name": "White Wine" },
+    { "id": "rose", "name": "Rosé" },
+    { "id": "sparkling", "name": "Sparkling Wine" }
+  ]
