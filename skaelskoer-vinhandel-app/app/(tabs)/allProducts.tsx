@@ -1,6 +1,6 @@
-import { View, Text, StyleSheet } from 'react-native';
+import { Text, StyleSheet, View, SafeAreaView } from 'react-native'
+import React, { Component } from 'react'
 import AppLayout from '@/components/AppLayout';
-import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function Tab() {
    return (
@@ -14,17 +14,17 @@ export default function Tab() {
 }
 
 const styles = StyleSheet.create({
-  contentContainer: {
-    flex: 1,
-    padding: 20,
-  },
-  heading: {
-    fontSize: 24,
-    fontWeight: "bold",
-    marginBottom: 10,
-  },
-  paragraph: {
-    fontSize: 16,
-    lineHeight: 24,
-  }
-});
+    contentContainer: {
+      flex: 1,
+      padding: 20,
+    },
+    heading: {
+      fontSize: 24,
+      fontWeight: "bold",
+      marginBottom: 10,
+    },
+    paragraph: {
+      fontSize: 16,
+      lineHeight: 24,
+    }
+  });

@@ -1,4 +1,6 @@
 import AppLayout from "@/components/AppLayout";
+import Slider from "@/components/Slider";
+import { ImageSlider } from "@/data/SliderData";
 import React from "react";
 import { Text, View, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -6,14 +8,12 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Index() {
   return (
-    <SafeAreaView>
       <AppLayout>
-        <View style={styles.contentContainer}>
-          <Text style={styles.heading}>Welcome to Skælskør Vinhandel</Text>
-          <Text style={styles.paragraph}>Explore our selection of fine wines and spirits.</Text>
-        </View>
+        <SafeAreaView style={styles.contentContainer}>
+         <Slider itemList={ImageSlider}/>
+        </SafeAreaView>
       </AppLayout>
-    </SafeAreaView>
+    
   );
 }
   
@@ -21,7 +21,8 @@ export default function Index() {
 const styles = StyleSheet.create({
   contentContainer: {
     flex: 1,
-    padding: 20,
+    justifyContent: "center",
+    alignItems: "center",
   },
   heading: {
     fontSize: 24,
