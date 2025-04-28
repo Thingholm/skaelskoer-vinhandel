@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { View, StyleSheet} from "react-native";
 import { Drawer } from "react-native-paper";
+import Categories from '@/data/Categories.json' 
 
 interface DrawerContentProps {
     onItemPress?: (screen: string) => void;
@@ -19,21 +20,16 @@ const DrawerContent = ({ onItemPress }: DrawerContentProps) => {
     return (
     <View style={styles.drawerContent}>
         <Drawer.Section>
-          <Drawer.Item 
-            label="Alle produkter"
-            active={active === 'Alle produkter'}
-            onPress={() => handleItemPress('Alle produkter')}
-          />
-          <Drawer.Item  
-            label="Products"
-            active={active === 'products'}
-            onPress={() => handleItemPress('products')}
-          />
-          <Drawer.Item  
-            label="About"
-            active={active === 'about'}
-            onPress={() => handleItemPress('about')}
-          />
+          {Categories.map(Item => {
+            return ( 
+              <Drawer.Item
+              label={Item.name}
+              key={Item.id}
+              active={active === Item.id.toString()}
+              onPress={() => handleItemPress(Item.id.toString())}
+              />
+            )
+          })}
         </Drawer.Section>
       </View>
     );

@@ -1,9 +1,8 @@
 import { Text, StyleSheet, View, SafeAreaView } from 'react-native'
 import React, { Component } from 'react'
 import AppLayout from '@/components/AppLayout';
-import ProductsData from '@/data/Products.json'
 
-export default function Tab() {
+export default function AllProducts() {
    return (
         <AppLayout>
           <SafeAreaView style={styles.contentContainer}>

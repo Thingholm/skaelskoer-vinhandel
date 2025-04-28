@@ -1,7 +1,7 @@
 [
-    { "id": "all", "name": "All Products" },
-    { "id": "red", "name": "Red Wine" },
-    { "id": "white", "name": "White Wine" },
-    { "id": "rose", "name": "Rosé" },
-    { "id": "sparkling", "name": "Sparkling Wine" }
+    { "id": "1", "name": "All Products" },
+    { "id": "2", "name": "Red Wine" },
+    { "id": "3", "name": "White Wine" },
+    { "id": "4", "name": "Rosé" },
+    { "id": "5", "name": "Sparkling Wine" }
   ]
