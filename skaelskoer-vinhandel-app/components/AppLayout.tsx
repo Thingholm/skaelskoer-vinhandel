@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { View, StyleSheet, Image } from "react-native";
+import { View, StyleSheet, Image, ScrollView } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { Drawer, IconButton, PaperProvider, MD3LightTheme } from "react-native-paper";
 import { DrawerLayout, GestureHandlerRootView } from "react-native-gesture-handler";
@@ -41,18 +41,20 @@ export default function AppLayout({ children }: AppLayoutProps) {
   const renderDrawerContent = () => {
     return (
       <View style={styles.drawerContent}>
-        <Drawer.Section>
-          {Categories.map(Item => {
-            return ( 
-              <Drawer.Item
-              label={Item.name}
-              key={Item.id}
-              active={active === Item.id.toString()}
-              onPress={() => handleItemPress(Item.id.toString())}
-              />
-            )
-          })}
-        </Drawer.Section>
+      <ScrollView>
+          <Drawer.Section>
+            {Categories.map(Item => {
+              return ( 
+                <Drawer.Item
+                label={Item.name}
+                key={Item.id}
+                active={active === Item.id.toString()}
+                onPress={() => handleItemPress(Item.id.toString())}
+                />
+              )
+            })}
+          </Drawer.Section>
+        </ScrollView>
       </View>
     );
   };
