@@ -41,7 +41,7 @@ export default function AppLayout({ children }: AppLayoutProps) {
   const renderDrawerContent = () => {
     return (
       <View style={styles.drawerContent}>
-      <ScrollView>
+        <ScrollView>
           <Drawer.Section>
             {Categories.map(Item => {
               return ( 
