@@ -4,6 +4,7 @@ import { StatusBar } from "expo-status-bar";
 import { Drawer, IconButton, PaperProvider, MD3LightTheme } from "react-native-paper";
 import { DrawerLayout, GestureHandlerRootView } from "react-native-gesture-handler";
 import Categories from '@/data/Categories.json'
+import { useRouter } from "expo-router"
 
 interface AppLayoutProps {
   children: React.ReactNode;
@@ -13,9 +14,18 @@ export default function AppLayout({ children }: AppLayoutProps) {
   const [active, setActive] = useState('home');
   const [drawerOpen, setDrawerOpen] = useState(false);
   const drawerRef = useRef<DrawerLayout>(null);
+  const router = useRouter();
 
   const handleItemPress = (screen: string) => {
     setActive(screen);
+    if (screen === "1") {
+      router.push("/allProducts");
+    } else if (screen === "home") {
+      router.push("/");
+    } else {
+      // For other category IDs, you can navigate to a dynamic route
+      //router.push(`/category/${screen}`);
+    }
     // Close drawer after selection
     if (drawerRef.current) {
       drawerRef.current.closeDrawer();
@@ -43,6 +53,12 @@ export default function AppLayout({ children }: AppLayoutProps) {
       <View style={styles.drawerContent}>
         <ScrollView>
           <Drawer.Section>
+            <Drawer.Item
+            label="Home"
+            key="Home"
+            active={active === "home"}
+            onPress={() => handleItemPress("home")}
+            />
             {Categories.map(Item => {
               return ( 
                 <Drawer.Item
