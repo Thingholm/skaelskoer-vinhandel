@@ -18,14 +18,29 @@ export default function AppLayout({ children }: AppLayoutProps) {
 
   const handleItemPress = (screen: string) => {
     setActive(screen);
-    if (screen === "1") {
-      router.push("/allProducts");
-    } else if (screen === "home") {
-      router.push("/");
-    } else {
-      // For other category IDs, you can navigate to a dynamic route
-      //router.push(`/category/${screen}`);
+
+    //Category ID til route mapping
+    const categoryRoutes: Record<string, string> = {
+      'home': '/',
+      '1': '/categories/allProducts',
+      '2': '/categories/redWine',
+      '3': '/categories/whiteWine',
+      '4': '/categories/dessertWine',
+      '5': '/categories/sparklingWine',
+      '6': '/categories/whisky',
+      '7': '/categories/rum',
+      '8': '/categories/liquor',
+      '9': '/categories/specialities',
+      '10': '/categories/glass',
+    };
+
+    //Navigation vha. ovenstående mapping
+    const route = categoryRoutes[screen];
+    if(route) {
+      router.push(route as any);
     }
+  
+
     // Close drawer after selection
     if (drawerRef.current) {
       drawerRef.current.closeDrawer();
