@@ -22,16 +22,16 @@ export default function AppLayout({ children }: AppLayoutProps) {
     //Category ID til route mapping
     const categoryRoutes: Record<string, string> = {
       'home': '/',
-      '1': '/allProducts',
-      '2': '/redWine',
-      '3': '/whiteWine',
-      '4': '/dessertWine',
-      '5': '/sparklingWine',
-      '6': '/whisky',
-      '7': '/rum',
-      '8': '/liquor',
-      '9': '/specialities',
-      '10': '/glass',
+      '1': '/categories/allProducts',
+      '2': '/categories/redWine',
+      '3': '/categories/whiteWine',
+      '4': '/categories/dessertWine',
+      '5': '/categories/sparklingWine',
+      '6': '/categories/whisky',
+      '7': '/categories/rum',
+      '8': '/categories/liquor',
+      '9': '/categories/specialities',
+      '10': '/categories/glass',
     };
 
     //Navigation vha. ovenstående mapping
