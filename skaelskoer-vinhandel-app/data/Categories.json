@@ -1,0 +1,12 @@
+[
+    { "id": "1", "name": "Alle produkter" },
+    { "id": "2", "name": "Rødvin" },
+    { "id": "3", "name": "Hvidvin" },
+    { "id": "4", "name": "Dessertvin" },
+    { "id": "5", "name": "Mousserende vin" },
+    { "id": "6", "name": "Whisky" },
+    { "id": "7", "name": "Rom" },
+    { "id": "8", "name": "Spiritus" },
+    { "id": "9", "name": "Specialiteter" },
+    { "id": "10", "name": "Glas"}
+  ]

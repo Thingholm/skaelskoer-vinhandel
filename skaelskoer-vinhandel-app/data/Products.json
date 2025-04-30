@@ -1,0 +1,42 @@
+[
+  {
+    "ProductNumber": "W001",
+    "Name": "Château Lumière Cabernet Sauvignon",
+    "Price": 24.99,
+    "Description": "A full-bodied red wine with notes of blackberry, oak, and dark chocolate.",
+    "Producer": "Château Lumière",
+    "Amount": 150
+  },
+  {
+    "ProductNumber": "W002",
+    "Name": "Villa Bianca Pinot Grigio",
+    "Price": 14.50,
+    "Description": "A crisp, refreshing white wine with hints of green apple and citrus.",
+    "Producer": "Villa Bianca Vineyards",
+    "Amount": 200
+  },
+  {
+    "ProductNumber": "W003",
+    "Name": "Suncrest Rosé",
+    "Price": 18.75,
+    "Description": "A delicate rosé wine featuring strawberry and watermelon flavors.",
+    "Producer": "Suncrest Winery",
+    "Amount": 120
+  },
+  {
+    "ProductNumber": "W004",
+    "Name": "Highland Reserve Merlot",
+    "Price": 22.00,
+    "Description": "A smooth Merlot with a rich palate of plum and vanilla.",
+    "Producer": "Highland Reserve",
+    "Amount": 95
+  },
+  {
+    "ProductNumber": "W005",
+    "Name": "Golden Fields Chardonnay",
+    "Price": 19.95,
+    "Description": "A creamy Chardonnay with flavors of buttered toast and tropical fruit.",
+    "Producer": "Golden Fields Estate",
+    "Amount": 180
+  }
+]
