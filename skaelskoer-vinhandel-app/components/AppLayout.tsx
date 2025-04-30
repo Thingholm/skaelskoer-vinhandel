@@ -19,6 +19,7 @@ export default function AppLayout({ children }: AppLayoutProps) {
   const handleItemPress = (screen: string) => {
     setActive(screen);
 
+    //Category ID til route mapping
     const categoryRoutes: Record<string, string> = {
       'home': '/',
       '1': '/allProducts',
@@ -33,6 +34,7 @@ export default function AppLayout({ children }: AppLayoutProps) {
       '10': '/glass',
     };
 
+    //Navigation vha. ovenstående mapping
     const route = categoryRoutes[screen];
     if(route) {
       router.push(route as any);
