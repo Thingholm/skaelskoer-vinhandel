@@ -32,6 +32,7 @@ export default function AppLayout({ children }: AppLayoutProps) {
       '8': '/categories/liquor',
       '9': '/categories/specialities',
       '10': '/categories/glass',
+      'aboutUs': '/aboutUs',
     };
 
     //Navigation vha. ovenstående mapping
