@@ -6,7 +6,7 @@ export default function AllProducts() {
    return (
         <AppLayout>
           <SafeAreaView style={styles.contentContainer}>
-            <Text style={styles.heading}>Welcome to Skælskør Vinhandel</Text>
+            <Text style={styles.heading}>Om os</Text>
             <Text style={styles.paragraph}>Explore our selection of fine wines and spirits.</Text>
           </SafeAreaView>
         </AppLayout>
@@ -22,6 +22,7 @@ const styles = StyleSheet.create({
       fontSize: 24,
       fontWeight: "bold",
       marginBottom: 10,
+      alignContent: 'center',
     },
     paragraph: {
       fontSize: 16,
