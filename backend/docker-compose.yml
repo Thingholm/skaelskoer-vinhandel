@@ -1,0 +1,29 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - 8080:80
+      - 8081:443
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    volumes:
+      - .:/app
+      - /app/SkaelskoerVinhandelApi/obj
+      - /app/SkaelskoerVinhandelApi/bin
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+    stdin_open: true
+    tty: true
+    command: ["dotnet", "watch", "run", "--project", "/app/SkaelskoerVinhandelApi/SkaelskoerVinhandelApi.csproj", "--urls", "https://0.0.0.0:443;http://0.0.0.0:80"]
+  
+  db:
+    container_name: skaelskoer-vinhandel-dev-db
+    image: postgres:latest
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - /var/lib/postgresql/skaelskoer-vinhandel-data
+    ports:
+      - 5432:5432

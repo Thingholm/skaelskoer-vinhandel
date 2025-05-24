@@ -1,0 +1,13 @@
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+WORKDIR /app
+
+COPY SkaelskoerVinhandelApi/SkaelskoerVinhandelApi.csproj .
+RUN dotnet restore
+
+RUN dotnet dev-certs https --clean && \
+    dotnet dev-certs https --trust
+    
+RUN dotnet tool install --global dotnet-ef --version 8.* 
+ENV PATH="$PATH:/root/.dotnet/tools"
+
+COPY SkaelskoerVinhandelApi .
