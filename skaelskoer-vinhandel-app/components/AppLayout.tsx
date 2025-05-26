@@ -32,6 +32,7 @@ export default function AppLayout({ children }: AppLayoutProps) {
       '8': '/categories/liquor',
       '9': '/categories/specialities',
       '10': '/categories/glass',
+      'aboutUs': '/aboutUs',
     };
 
     //Navigation vha. ovenstående mapping
@@ -69,7 +70,7 @@ export default function AppLayout({ children }: AppLayoutProps) {
         <ScrollView>
           <Drawer.Section>
             <Drawer.Item
-            label="Home"
+            label="Hjem"
             key="Home"
             active={active === "home"}
             onPress={() => handleItemPress("home")}
@@ -84,6 +85,12 @@ export default function AppLayout({ children }: AppLayoutProps) {
                 />
               )
             })}
+            <Drawer.Item
+            label="Om os"
+            key="aboutUs"
+            active={active === "aboutUs"}
+            onPress={() => handleItemPress("aboutUs")}
+            />
           </Drawer.Section>
         </ScrollView>
       </View>
